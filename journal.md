@@ -53,7 +53,7 @@ Week of March 3rd:
 Week of March 10th:
 - Creating file tree:
   I will base my file tree off of this one (given by chatGPT)
-  /
+/
  ├── data/                         # Raw and processed data
  │      ├── raw/                   # Raw data (original dataset files)
  │      ├── processed/             # Preprocessed/cleaned data
