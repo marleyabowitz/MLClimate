@@ -101,8 +101,11 @@ Week of March 10th:
 
 Week of March 24th:
 - Normalizing and scaling features.
+- Scale numerical features (temperature, humidity, wind speed) using MinMaxScaler() or StandardScaler() from sklearn.preprocessing.
+- One-hot encode categorical variables (e.g., season, county).
+- Handle missing data (e.g., use mean imputation or fill with 0 for sparse datasets).
   
 Week of March 31:
-- TODO: Run models
+- TODO
 
 
