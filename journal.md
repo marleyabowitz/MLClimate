@@ -106,6 +106,6 @@ Week of March 24th:
 - Handle missing data (e.g., use mean imputation or fill with 0 for sparse datasets).
   
 Week of March 31:
-- TODO
+- I am unable to work this week because I have two midterms on Monday. These are my last ones, so I can work on this project a lot in the next two weeks!
 
 
