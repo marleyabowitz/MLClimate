@@ -82,6 +82,7 @@ Week of March 31st:
 - I am unable to work this week because I have two midterms on Monday. These are my last ones, so I can work on this project a lot in the next two weeks!
 
 Week of April 7th:
+- working on journal update, will add before class!
 
 Week of April 14th:
 
