@@ -46,58 +46,31 @@ Week of March 3rd:
 - Finalized what features we will use.
 - Approaching the issue of spatial and temporal discrepancies in the data: because a lot of the data is defined geographically, I am choosing to approach the dataset by doing a latitude longitude grid.
   I will divide California into a grid of equally spaced latitude/longitude cells (e.g., 0.1° x 0.1° or 0.01° x 0.01° resolution). Geospatial data (weather patterns, vegetation) are usually in lat/lon format, making it easy to integrate. Some socioeconomic or county-level data may require aggregation or disaggregation, so I will need to figure this out. First I will assign each data point (e.g., weather station data, fire history) to the nearest lat/lon grid cell. For region-based data (e.g., county data), repeat the value across all cells within the region.
-- Found datasets for said features: XXXXX
-
-
+- I narrowed down features to precipitation, z index, PDSI, population density, wind speed, wind direction, temperature, and fire history.
+- Unprocessed datasets are in the data file. 
 
 Week of March 10th:
-- Creating file tree:
-  I will base my file tree off of this one (given by chatGPT)
-/
- ├── data/                         # Raw and processed data
- │      ├── raw/                   # Raw data (original dataset files)
- │      ├── processed/             # Preprocessed/cleaned data
- │      └── external/              # External datasets or auxiliary files
- │
- ├── notebooks/                    # Jupyter Notebooks for EDA & experiments
- │      ├── eda.ipynb              # Exploratory Data Analysis
- │      ├── feature_eng.ipynb      # Feature engineering/testing
- │      └── model_testing.ipynb    # Model testing and evaluation
- │
- ├── scripts/                      # Python scripts for various stages
- │      ├── data_grid.py           # For loading & saving datasets into the grid
- │      ├── preprocess.py          # Preprocessing steps (cleaning, encoding, scaling)
- │      ├── feature_engineering.py # Feature extraction & selection
- │      ├── model_train.py         # Model training script
- │      ├── model_eval.py          # Model evaluation script
- │      └── utils.py               # Helper functions (e.g., custom metrics)
- │
- ├── models/                       # Saved models & serialized files
- │      ├── model.pkl              # Trained model file
- │      ├── scaler.pkl             # Scaler object
- │      └── vectorizer.pkl         # Vectorizer (TF-IDF, CountVectorizer, etc.)
- │
- ├── config/                       # Configuration files
- │      └── config.yaml            # Hyperparameters, file paths, etc.
- │
- ├── tests/                        # Unit and integration tests
- │      ├── test_preprocess.py
- │      ├── test_model.py
- │      └── test_utils.py
- │
- ├── requirements.txt              # Python dependencies
- ├── main.py                       # Main entry point for running the pipeline
- ├── README.md                     # Project description and instructions
- └── .gitignore                    # Git ignore file
-
 - Combine all datasets into one dataset
 - First I need to choose my grid resolution: Based on other projects,
   - 1 km × 1 km (~0.01° lat/lon): High-resolution but large dataset.
   - 10 km × 10 km (~0.1° lat/lon): Moderate balance between precision and performance.
   - 50 km × 50 km (~0.5° lat/lon): Coarse but computationally efficient.
   - I will start with 0.1° (~10 km grid) for a good balance, and adjust based on performance.
-- Next I create the grid using python (data_grid.py)
+- Next I create the grid in a shapefile format using python (data_grid.py)
 - I then assign data do the grid and merge all datasets.
+  - Index: Latitude, Longitude, Week (from 2013-01-01 to 2025-03-31)
+  - Variables per grid cell-week:
+    - precipitation (monthly → assigned to each week in that month)
+    - z_index (monthly → weekly via forward fill within the month)
+    - pdsi (monthly → weekly)
+    - population (yearly → repeated for all weeks in that year)
+    - wind_speed (weekly, by station → interpolated to grid)
+    - wind_direction (weekly, same as above)
+    - temperature (weekly, same as above)
+    - fire_past_6mo (binary: was there a fire in this grid in past 26 weeks)
+    - fire_this_week (binary: was there a fire in this grid this week)
+- Each grid is assigned a county for the county-based datasets using this dataset: https://lab.data.ca.gov/dataset/california-county-boundaries-and-identifiers
+- Missing values are imputed with nearby data.
 
 Week of March 24th:
 - Normalizing and scaling features.
@@ -105,7 +78,11 @@ Week of March 24th:
 - One-hot encode categorical variables (e.g., season, county).
 - Handle missing data (e.g., use mean imputation or fill with 0 for sparse datasets).
   
-Week of March 31:
+Week of March 31st:
 - I am unable to work this week because I have two midterms on Monday. These are my last ones, so I can work on this project a lot in the next two weeks!
+
+Week of April 7th:
+
+Week of April 14th:
 
 
