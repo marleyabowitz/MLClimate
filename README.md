@@ -12,3 +12,5 @@ Dataset Creation
 
 /boundries/: holds all of the files for the CA County boundries shapefile which is used to assign grid cells to a county
 
+windSpeedData.py, windDirectionData.py, and tempData.py: in these scrpits, I upload data from the meteostat api and create the csv files found in /data/
+
