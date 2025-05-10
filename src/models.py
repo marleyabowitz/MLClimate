@@ -7,7 +7,7 @@ from sklearn.svm import SVC
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 
-# Load data
+# load data and train
 train = pd.read_csv("train_data_noFire.csv")
 test = pd.read_csv("test_data_noFire.csv")
 
@@ -17,17 +17,15 @@ y_train = train["fire_occurred"]
 X_test = test.drop(columns=["fire_occurred"])
 y_test = test["fire_occurred"]
 
-# Define models
 models = {
     "Logistic Regression": LogisticRegression(max_iter=1000, class_weight="balanced"),
     "Random Forest": RandomForestClassifier(class_weight="balanced", random_state=42),
     "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss'),
     "LightGBM": LGBMClassifier(),
- #   "SVM": SVC(probability=True, class_weight="balanced"),
     "Neural Net (MLP)": MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
 }
 
-# Train, predict, and evaluate each model
+# train, predict, and evaluate
 for name, model in models.items():
     print(f"\n🚀 Training: {name}")
     model.fit(X_train, y_train)
