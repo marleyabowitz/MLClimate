@@ -6,7 +6,7 @@ Fortunately this is not necessary as I have provided the final dataset to test t
 
 Here is a breakdown of each file in /src/:
 
-<u> Dataset Creation </u>
+<u>Dataset Creation</u>
 
 /data/: the data file holds all of the raw data from various sources. mapalldata.csv holds the fire data, and population, temp, wind direction, and windspeed are self explanatory. The folders /data/pdsi/, /data/zindex/, and /data/precipitation/ have files for each county for that variable. 
 
@@ -28,4 +28,4 @@ missingData.py: this takes fireDataPreProcessing.csv, drops wind direction becau
 
 addMonth.py: I forgot to add this variable, so this file takes cleaned_fire_data.csv and adds the month variable, saving this into dataPreScaling.csv
 
-<u> Pre Processing </u>
+<u>Pre Processing</u>
