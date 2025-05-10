@@ -14,4 +14,4 @@ Dataset Creation
 
 windSpeedData.py, windDirectionData.py, and tempData.py: in these scrpits, I upload data from the meteostat api and create the csv files found in /data/
 
-createGrid.py: this is how I created the grid of CA and assign counties to each cell using the boundries shapefile; this returned final_grid.gpkg
+createDataSet.py: this creates the first csv with each grid cell, county, week, and weather station
