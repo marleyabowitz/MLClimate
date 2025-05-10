@@ -29,3 +29,16 @@ missingData.py: this takes fireDataPreProcessing.csv, drops wind direction becau
 addMonth.py: I forgot to add this variable, so this file takes cleaned_fire_data.csv and adds the month variable, saving this into dataPreScaling.csv
 
 <u>Pre Processing</u>
+
+preProcessing.py: splits (random 80/20) and scales the data and then does feature importance
+
+preProcessing2.py: splits (random 80/20) and scales and does the correlation matrix
+
+scaleAndSplit.py: scales and (random 80/20) splits the data creating train_data.csv and test_data.csv
+
+scaleAndSplitKfold.py: scales and splits using StratifiedKfold to split the data saving it into train_data_KFold.csv and test_data_KFold.csv
+
+scaleAndSplitNoFire.py: scales and splits (random 80/20) and drops the fire history column saving it into train_data_noFire.csv and test_data_noFire.csv
+
+<u>ML Models</u>
+
