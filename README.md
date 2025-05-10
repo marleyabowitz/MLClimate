@@ -14,4 +14,4 @@ Dataset Creation
 
 windSpeedData.py, windDirectionData.py, and tempData.py: in these scrpits, I upload data from the meteostat api and create the csv files found in /data/
 
-createDataSet.py: this creates the first csv with each grid cell, county, week, and weather station
+createDataSet.py: this creates the first csv with each grid cell, county, week, and weather station outputting fireData.csv
