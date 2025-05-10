@@ -12,22 +12,19 @@ import lightgbm as lgb
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score
 
-# 1. Load Data
+# load, drop, features and targets, scale
 df = pd.read_csv("dataPreScaling.csv")
 
-# 2. Drop Non-Predictive Columns
 df = df.drop(columns=["grid_id", "county", "station_id", "week_start"])
 
-# 3. Define Features and Target
 X = df.drop(columns=["fire_occurred"])
 y = df["fire_occurred"]
 
-# 4. Scale Features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 X_scaled_df = pd.DataFrame(X_scaled, columns=X.columns)
 
-# 5. Correlation Matrix
+# correlation matric
 plt.figure(figsize=(12, 10))
 corr_matrix = X_scaled_df.corr()
 sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", square=True)
@@ -35,10 +32,10 @@ plt.title("Feature Correlation Matrix")
 plt.tight_layout()
 plt.show()
 
-# 6. Train/Test Split
+# split
 X_train, X_test, y_train, y_test = train_test_split(X_scaled_df, y, test_size=0.2, random_state=42)
 
-# 7. XGBoost Classifier
+# XGBoost Classifier
 xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42)
 xgb_model.fit(X_train, y_train)
 
@@ -54,7 +51,7 @@ plt.ylabel("Features")
 plt.tight_layout()
 plt.show()
 
-# 8. LightGBM Classifier
+# LightGBM Classifier
 lgb_model = lgb.LGBMClassifier(random_state=42)
 lgb_model.fit(X_train, y_train)
 
@@ -71,7 +68,7 @@ plt.tight_layout()
 plt.show()
 
 
-# 9. Permutation Importance for XGBoost
+# Permutation Importance for XGBoost
 result_xgb = permutation_importance(
     xgb_model, X_test, y_test, n_repeats=10, random_state=42, scoring='accuracy'
 )
@@ -89,7 +86,7 @@ plt.ylabel("Features")
 plt.tight_layout()
 plt.show()
 
-# 10. Permutation Importance for LightGBM
+# Permutation Importance for LightGBM
 result_lgb = permutation_importance(
     lgb_model, X_test, y_test, n_repeats=10, random_state=42, scoring='accuracy'
 )
