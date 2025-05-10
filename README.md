@@ -42,3 +42,11 @@ scaleAndSplitNoFire.py: scales and splits (random 80/20) and drops the fire hist
 
 <u>ML Models</u>
 
+models.py: runs the initial models (used for each of the training/testing splits)
+
+models2.py: runs the ensemble methods
+
+models3.py: looks deeper into the confidence aware model inlcuding looking at false positive and negatives for more insight
+
+models4.py: time series cross validation
+
