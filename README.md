@@ -10,3 +10,5 @@ Dataset Creation
 
 /data/: the data file holds all of the raw data from various sources. mapalldata.csv holds the fire data, and population, temp, wind direction, and windspeed are self explanatory. The folders /data/pdsi/, /data/zindex/, and /data/precipitation/ have files for each county for that variable. 
 
+/boundries/: holds all of the files for the CA County boundries shapefile which is used to assign grid cells to a county
+
